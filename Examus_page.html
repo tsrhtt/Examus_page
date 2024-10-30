@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инструкция по прохождению экзамена на платформе Examus</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: "Yandex Sans Text", Arial, sans-serif;
+            background-color: #f9fafc;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #1A2E3B;
+        }
+
+        /* Adding space on top for the header */
+        .container {
+            max-width: 1200px;
+            margin: 100px auto 0; /* Adjusted top margin */
+            padding: 20px;
+        }
+
+        /* Header Section */
+        .header {
+            background-color: #CCDAFF;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            width: calc(100% - 40px);
+            max-width: 1200px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        
+        /* Logo */
+        .header .logo {
+            max-height: 40px;
+            margin-right: auto;
+        }
+
+        /* Hamburger Button */
+        .menu-button {
+            background-color: #006cff;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .menu-button:hover {
+            background-color: #0052cc;
+        }
+        
+        .menu-icon, .close-icon {
+            font-size: 24px;
+            color: white;
+            transition: transform 0.3s;
+        }
+
+        /* Slide-Out Menu */
+        .side-menu {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #E6EAF0;
+            border-top-left-radius: 35px;
+            border-bottom-left-radius: 35px;
+            transform: translateX(100%);
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            opacity: 0;
+            z-index: 999;
+        }
+        
+        .side-menu.active {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        /* Menu Items */
+        .menu-items {
+            padding: 20px;
+            margin-top: 60px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-item {
+            font-size: 18px;
+            color: #333;
+            padding: 10px 20px;
+            margin: 5px 0;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .menu-item:hover {
+            background-color: #0033cc;
+            color: white;
+        }
+
+        /* FAQ Button */
+        .faq-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #006cff;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        
+        .faq-button:hover {
+            background-color: #0052cc;
+        }
+
+        /* Requirements Section Styles */
+        .requirements-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 40px 0;
+            padding: 20px 0;
+        }
+
+        .requirements-text {
+            max-width: 50%;
+        }
+
+        .requirements-text h2 {
+            color: #1A2E3B;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .requirements-text p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .requirements-buttons {
+            margin-top: 20px;
+        }
+
+        .requirements-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-right: 10px;
+            font-size: 16px;
+            color: #333;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .requirements-button:hover {
+            background-color: #006cff;
+            color: #fff;
+        }
+
+        .requirements-image img {
+            max-width: 400px;
+            border-radius: 10px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background-image: url('education-cover-2.png.webp'); /* Replace with your image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 50px 50px;
+            border-radius: 35px;
+            text-align: left;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        .hero-section h1 {
+            font-size: 48px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: black;
+            max-width: 600px;
+        }
+        .hero-section p {
+            font-size: 20px;
+            line-height: 1.6;
+            margin: 0;
+            color: black;
+            max-width: 600px;
+        }
+
+        /* Step Sections */
+        .step-section {
+            background-color: #ffffff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 35px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .step-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .step-section h2 {
+            margin-top: 0;
+            color: #0033cc;
+        }
+        .divider {
+            border-top: 1px solid #E6EAF0;
+            margin: 20px 0;
+        }
+
+        /* First step section (No animation) */
+        .no-animation {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* Download Blocks */
+        .download-blocks {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .download-block {
+            flex: 1;
+            background-color: #E6EAF0;
+            padding: 20px;
+            text-align: center;
+            border-radius: 20px;
+            position: relative;
+        }
+        .download-block h3 {
+            margin-bottom: 15px;
+        }
+        .download-block img {
+            max-height: 40px;
+            margin-bottom: 10px;
+        }
+        .download-block a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #006cff;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: background-color 0.3s;
+        }
+        .download-block a:hover {
+            background-color: #0052cc;
+        }
+        .device-check a {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #006cff;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: background-color 0.3s;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .device-check a:hover {
+            background-color: #0052cc;
+        }
+        .device-check p {
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .action-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #006cff;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: background-color 0.3s;
+        }
+        .action-button:hover {
+            background-color: #0052cc;
+        }
+        .instruction-images {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .instruction-images img {
+            max-width: 200px;
+            border-radius: 12px;
+        }
+
+        /* Warning Block */
+        .warning-block {
+            background-color: #fff4e5;
+            border: 1px solid #ff9900;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 12px;
+            color: #ff9900;
+        }
+
+        /* Step 4 Image Layout (two images, needed other CSS) */
+        .instruction-images_4 {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .instruction-image_4_1 {
+            width: 50%; 
+            max-width: 600px; 
+            border-radius: 12px;
+        }
+
+        .instruction-image_4_2 {
+            width: 50%; 
+            max-width: 300px; 
+            border-radius: 12px;
+        }
+
+        .curvy-arrow {
+            width: 10%; 
+            max-width: 120px; 
+            margin: 0 20px; 
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background-color: #CCDAFF;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 35px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        .faq-section h2 {
+            margin-top: 0;
+            color: #0033cc;
+            text-align: center;
+        }
+
+        .faq-block {
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, max-height 0.5s ease-in-out;
+            overflow: hidden;
+        }
+        .faq-block h3 {
+            margin: 0;
+            color: #0033cc;
+            font-size: 18px;
+        }
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .faq-block.active .faq-content {
+            max-height: 300px;
+        }
+
+        /* Footer Section Styles */
+        .footer-section {
+            padding: 40px 20px;
+            text-align: center;
+            color: #333;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .footer-logo {
+            text-align: left;
+            max-width: 60%;
+        }
+
+        .footer-logo-img {
+            max-height: 30px;
+            margin-bottom: 10px;
+        }
+
+        .footer-logo p {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .footer-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #333;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+            margin-top: 10px;
+        }
+
+        .footer-button:hover {
+            background-color: #006cff;
+            color: #fff;
+        }
+
+        .footer-contacts {
+            text-align: left;
+        }
+
+        .footer-contacts h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #1A2E3B;
+        }
+
+        .contact-link {
+            display: block;
+            font-size: 16px;
+            color: #333;
+            text-decoration: none;
+            margin-bottom: 5px;
+            transition: color 0.3s;
+        }
+
+        .contact-link:hover {
+            color: #006cff;
+        }
+
+        .footer-bottom {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <img src="logo_grad_full.svg" alt="Yandex Cloud Logo" class="logo">
+        <button class="menu-button" onclick="toggleMenu()">
+            <span class="menu-icon">☰</span>
+            <span class="close-icon" style="display: none;">✕</span>
+        </button>
+    </div>
+
+    <!-- Side Menu -->
+    <div class="side-menu" id="sideMenu">
+        <div class="menu-items">
+            <a href="#step1" class="menu-item" onclick="scrollToSection(event, 'step1')">Скачивание платформы тестирования</a>
+            <a href="#step2" class="menu-item" onclick="scrollToSection(event, 'step2')">Ссылка на тестирование</a>
+            <a href="#step3" class="menu-item" onclick="scrollToSection(event, 'step3')">Запуск системы прокторинга</a>
+            <a href="#step4" class="menu-item" onclick="scrollToSection(event, 'step4')">Сканирование QR-кода</a>
+            <a href="#step5" class="menu-item" onclick="scrollToSection(event, 'step5')">Этапы проверки</a>
+            <a href="#step6" class="menu-item" onclick="scrollToSection(event, 'step6')">Начало тестирования</a>
+            <a href="#faq-section" class="menu-item" onclick="scrollToSection(event, 'faq-section')">Часто задаваемые вопросы</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1>Инструкция по прохождению экзамена на платформе Examus</h1>
+            <p>Пройдите все шаги и подготовьтесь к тестированию.</p>
+        </div>
+
+        <!-- Rules and Technical Requirements Section -->
+        <div class="requirements-section">
+            <div class="requirements-text">
+                <h2>Правила и технические требования</h2>
+                <p>Онлайн-тестирование проводится с прокторингом. Экзамен записывается на камеру, а специальные алгоритмы фиксируют возможные нарушения правил. Это помогает справедливо оценить ваши навыки. Узнайте о всех правилах прохождения экзамена по выбранной вами сертификации.</p>
+                <div class="requirements-buttons">
+                    <a href="https://yandex.cloud/ru/certification/requirements" target="_blank" class="requirements-button">Engineer Associate</a>
+                    <a href="https://yandex.cloud/ru/certification/security-specialist-requirements" target="_blank" class="requirements-button">Security Specialist</a>
+                </div>
+            </div>
+            <div class="requirements-image">
+                <img src="certification-block-proctoring.png.webp" alt="Illustration of proctoring setup">
+            </div>
+        </div>
+
+        <!-- Step 1: Download Section (No Animation) -->
+        <div id="step1" class="step-section no-animation">
+            <h2>Шаг 1. Скачать заранее и пройти предварительную проверку устройства на совместимость</h2>
+            <div class="download-blocks">
+                <!-- Windows Block -->
+                <div class="download-block">
+                    <img src="windows-10-icon.svg" alt="Windows Logo">
+                    <h3>Скачать для Windows 10 x64 или выше</h3>
+                    <a href="https://secure-browser.student.examus.net/current/examus/Examus.exe" download>Скачать</a>
+                </div>
+                <!-- macOS Block -->
+                <div class="download-block">
+                    <img src="pngegg (1).png" alt="Apple Logo">
+                    <h3>Скачать для macOS 10.15 или выше</h3>
+                    <a href="https://secure-browser.student.examus.net/current/examus/Examus.dmg" download>Скачать</a>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="device-check">
+                <h2>Проверить своё устройство</h2>
+                <a href="https://lms.demo.examus.net/web/start/syscheck_sb/" target="_blank">Проверить устройство</a>
+                <p>Обязательно пройдите проверку оборудования за несколько дней до тестирования. В день тестирования используйте то же устройство, на котором была успешно пройдена проверка.</p>
+            </div>
+        </div>
+
+        <!-- Step 2 Section -->
+        <div id="step2" class="step-section">
+            <h2>Шаг 2. В день тестирования перейдите в свою почту и откройте полученную от вашего организатора ссылку. Ссылку открывать нужно в браузере Chrome/Edge/Yandex.</h2>
+            <p>Ниже приведен пример того, как выглядит письмо.</p>
+            <img src="2.png" alt="Example Screenshot">
+            <p>После открытия ссылки нажмите Начать.</p>
+        </div>
+
+        <!-- Step 3 Section -->
+        <div id="step3" class="step-section">
+            <h2>Шаг 3. Откроется Экзамус. Нажмите Запустить Систему Прокторинга.</h2>
+            <img src="3.png" alt="Launch Proctoring">
+            <div class="warning-block">
+                <strong>Важно!</strong> Тест будет запущен, если вы установили приложение в пункте 1 и 2. Если не установили - нажмите Скачать и установить систему прокторинга.
+            </div>
+        </div>
+
+        <!-- Step 4 Section -->
+        <div id="step4" class="step-section">
+            <h2>Шаг 4. Отсканируйте QR-код со своего смартфона и разрешите доступ к камере на смартфоне.</h2>
+            <div class="instruction-images_4">
+                <img src="QR.png" alt="QR Code Scan" class="instruction-image_4_1">
+                <img src="pngegg.png" alt="Arrow pointing to next step" class="curvy-arrow">
+                <img src="__2024-04-03_174225.png" alt="Camera Permission" class="instruction-image_4_2">
+            </div>
+        </div>
+
+        <!-- Step 5 Section -->
+        <div id="step5" class="step-section">
+            <h2>Шаг 5. Пройдите этапы проверки показа рабочего стола, ознакомления с правилами, проверки оборудования. После закрытия процессов будет запущено тестирование.</h2>
+            <img src="4.png" alt="Equipment Check">
+        </div>
+
+        <!-- Step 6 Section -->
+        <div id="step6" class="step-section">
+            <h2>Шаг 6. Начните прохождение тестирования на платформе. Для завершения тестирования нажмите Ответить и завершить.</h2>
+            <img src="5.png" alt="Start Testing">
+        </div>
+
+        <!-- FAQ Section -->
+        <div id="faq-section" class="faq-section">
+            <h2>Ответы на часто задаваемые вопросы</h2>
+            
+            <div class="faq-block" data-faq="1">
+                <h3>Как узнать свой результат тестирования?</h3>
+                <div class="faq-content">
+                    <p><strong>Результат тестирования будет направлен вам по электронной почте, а также доступен в личном кабинете через 14 дней после экзамена.</strong></p>
+                    <p>В зависимости от числа набранных баллов участник получает отметку «сдано» или «не сдано». При получении отметки «сдано» и положительном заключении прокторинга участнику высылается сертификат Yandex Cloud. При получении отметки «не сдано» и положительном заключении прокторинга участник получает информацию о проценте правильных ответов по каждому из доменов. При отрицательном заключении прокторинга участник получает информацию о причинах отклонения результатов.</p>
+                </div>
+            </div>
+
+            <div class="faq-block" data-faq="2">
+                <h3>Можно ли предварительно проверить своё устройство на соответствие техническим требованиям?</h3>
+                <div class="faq-content">
+                    <p>Да, конечно, вы можете перейти по ссылке ниже для проверки оборудования.</p>
+                    <a class="action-button" href="https://lms.demo.examus.net/web/start/syscheck_sb/" target="_blank">Проверить оборудование</a>
+                </div>
+            </div>
+
+            <div class="faq-block" data-faq="3">
+                <h3>Пишет, что нет разрешения на доступ к рабочему столу или не проходит проверка оборудования в защищённом браузере.</h3>
+                <div class="faq-content">
+                    <p><strong>Попробуйте воспользоваться cтатьями:</strong></p>
+                    <ul>
+                        <li><a href="https://help.examus.net/article/63203" target="_blank">https://help.examus.net/article/63203</a></li>
+                        <li><a href="https://help.examus.net/category/15135" target="_blank">https://help.examus.net/category/15135</a></li>
+                        <li><a href="https://help.examus.net/article/63304" target="_blank">https://help.examus.net/article/63304</a></li>
+                        <li><a href="https://help.examus.net/article/63252" target="_blank">https://help.examus.net/article/63252</a></li>
+                    </ul>
+                    <p><strong>Также помните, что для прохождения тестирования необходимо:</strong></p>
+                    <ul>
+                        <li>Иметь скорость интернет-соединения не ниже 1 Мбит/с;</li>
+                        <li>Отключить все сторонние приложения, антивирусы, VPN, и прочие программы, которые могут влиять на скорость;</li>
+                        <li>Иметь исправные веб-камеру и микрофон;</li>
+                        <li>Разрешить доступ к рабочему столу (для macOS нужно предварительно настроить для macOS доступы к микрофону, камере и выдать универсальный доступ: <a href="https://help.examus.net/article/63203" target="_blank">https://help.examus.net/article/63203</a>).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-block" data-faq="4">
+                <h3>Как можно связаться с поддержкой?</h3>
+                <div class="faq-content">
+                    <p><strong>Если у вас возникли вопросы, то можете связаться со Службой Заботы Экзамус:</strong></p>
+                    <ul>
+                        <li>Telegram: <a href="https://t.me/examusbot" target="_blank">https://t.me/examusbot</a></li>
+                        <li>Почта: <a href="mailto:support@examus.com">support@examus.com</a></li>
+                        <li>Чат в левом нижнем углу (только в защищённом браузере)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-block" data-faq="5">
+                <h3>Можно ли использовать рабочий ноутбук?</h3>
+                <div class="faq-content">
+                    <p>Проходить тестирование рекомендуется только с личного устройства, без VPN и без корпоративной сети.</p>
+                </div>
+            </div>
+
+            <div class="faq-block" data-faq="6">
+                <h3>Технические требования для компьютера</h3>
+                <div class="faq-content">
+                    <ul>
+                        <li><strong>Операционная система:</strong>
+                            <ul>
+                                <li>Windows 10 x64 / Windows 11 x64 или более полные издания (Windows 10 S, Windows 8 RT и все 32-разрядные версии - не поддерживаются);</li>
+                                <li>macOS версии 10.12.1 или выше;</li>
+                            </ul>
+                        </li>
+                        <li><strong>Процессор:</strong>
+                            <ul>
+                                <li>Intel Core 2 DUO или AMD Athlon x2, либо более новые модели с поддержкой SSE3, с 2 ядрами и больше, и частотой 1,8 ГГц и выше</li>
+                            </ul>
+                        </li>
+                        <li><strong>Оперативная память:</strong>
+                            <ul>
+                                <li>4 ГБ и больше;</li>
+                            </ul>
+                        </li>
+                        <li><strong>Свободное место на диске:</strong>
+                            <ul>
+                                <li>500 МБ и больше;</li>
+                            </ul>
+                        </li>
+                        <li><strong>Веб-камера:</strong>
+                            <ul>
+                                <li>Фронтальная веб-камера с разрешением 640x480 и выше;</li>
+                            </ul>
+                        </li>
+                        <li><strong>Микрофон:</strong>
+                            <ul>
+                                <li>Наличие исправного и включенного микрофона (включая встроенные в ноутбуки);</li>
+                            </ul>
+                        </li>
+                        <li><strong>Скорость интернет-соединения:</strong>
+                            <ul>
+                                <li>Не ниже 1 Мбит/с;</li>
+                            </ul>
+                        </li>
+                        <li><strong>Передача данных по сетевым портам:</strong>
+                            <ul>
+                                <li>UDP: 3478 (STUN/TURN), 49152 - 65535 (WebRTC media),</li>
+                                <li>TCP: 443 (HTTPS), 3478 (STUN/TURN)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="faq-block" data-faq="7">
+                <h3>При входе вижу белый экран. Что делать?</h3>
+                <div class="faq-content">
+                    <p>Данная ошибка возникает из-за того, что страница тестирования не загрузилась, чаще всего из-за проблем с интернет-соединением.</p> 
+                    <p><strong>Для её решения рекомендуем следующее:</strong></p>
+                    <ul>
+                        <li>Отключить VPN, если вы его используете, и перезагрузить приложение;</li>
+                        <li>Если вы используете macOS, то отключите IPv6. Перейти в меню Apple > Системные настройки > Сеть > у своей сети выбрать Подробное > IPv6 выключить, либо выбрать Вручную:
+                            <a href="https://support.apple.com/ru-ru/guide/mac-help/mchlp2591/mac" target="_blank">ссылка на инструкцию</a>
+                        </li>
+                        <li>Если у вас iPhone и macOS находятся в одной сети и подключены в одной сети, то отключите какое-то из устройств, оставьте только одно устройство подключенным.</li>
+                        <li>Попробуйте подключиться к более быстрой сети интернет.</li>
+                        <li>Попробуйте перезагрузить страницу в защищённом браузере, нажав на кнопку в меню справа "Перезагрузить".</li>
+                    </ul>
+                    <p><strong>Источник:</strong> <a href="https://help.examus.net/article/65185" target="_blank">https://help.examus.net/article/65185</a></p>
+                </div>
+            </div>
+
+            <div class="faq-block" data-faq="8">
+                <h3>Написано, что не работает с выключенным JavaScript. Что делать?</h3>
+                <div class="faq-content">
+                    <p>(Комментарий: на изначальном сайте в этом пункте написана РОВНО та же информация, что и в предыдущем пункте "При входе вижу белый экран. Что делать?")</p>
+                </div>
+            </div>
+
+            <div class="faq-block" data-faq="9">
+                <h3>На смартфоне после сканирования кода и перехода по ссылке не отображается изображение с камеры.</h3>
+                <div class="faq-content">
+                    <p>Это значит, что в мобильном браузере был установлен запрет на использование камеры сайтами.</p>
+                    <p>На Android обычно используется Google Chrome, проверить какой браузер использовался у вас - можно нажав на три точки.</p>
+                    <p><strong>В случае использования Google Chrome, выполните следующие шаги:</strong></p>
+                    <ul>
+                        <li>Запустите сам браузер Google Chrome</li>
+                        <li>Зайдите через три точки в Настройки</li>
+                        <li>Выберите Настройки сайтов</li>
+                        <li>Выберите Камера</li>
+                        <li>Переключатель Камера должен быть во включенном положении, а субдомены examus.net в разделе Разрешено</li>
+                        <li>После исправления настроек обновите страницу тестирования на компьютере, и просканируйте заново QR-код.</li>
+                    </ul>
+                    <p>Если используете Яндекс, внизу на кнопку с тремя полосками - Нажать на кружок с буквой i справа от имени сайта - Включить камеру.</p>
+                    <p><strong>Источник:</strong> <a href="https://help.examus.net/article/63332" target="_blank">https://help.examus.net/article/63332</a></p>
+                </div>
+            </div>
+
+            <div class="faq-block" data-faq="10">
+                <h3>Не получается выдать доступ в macOS, пишет, что нет системного доступа.</h3>
+                <div class="faq-content">
+                    <p>Для macOS нужно отдельно выдавать доступ к приложению. На разных версиях процесс выглядит по-разному.</p>
+                    <ul>
+                        <li>Перейдите в меню <strong>Apple > Системные настройки > Защита и безопасность > Конфиденциальность</strong></li>
+                        <li>Выставьте флажки возле пунктов:
+                            <ul>
+                                <li>Камера - Examus</li>
+                                <li>Микрофон - Examus</li>
+                                <li>Универсальный доступ - Examus</li>
+                            </ul>
+                        </li>
+                        <li>Сохраните настройки.</li>
+                    </ul>
+                    <img src="QyEtjH4Zg9Sb.png" alt="MacOS instruction-images">
+                    <p>На некоторых версиях нужно также установить лимит экранного времени для веб-камеры:</p>
+                    <ul>
+                        <li>Выберите меню <strong>Apple > Системные настройки > Экранное время > Контент и конфиденциальность > Приложения</strong></li>
+                        <li>Убедитесь, что для камеры установлен флажок;</li>
+                        <li>Выберите "Лимиты приложений". Чтобы использовать камеру с приложением из списка, убедитесь, что флажок "Лимиты" не установлен.</li>
+                        <li>Сохраните настройки и перезагрузите браузер.</li>
+                    </ul>
+                    <p>Необходимо также проверить настройки управления доступом к записи экрана и системной аудиозаписи:</p>
+                    <ul>
+                        <li>Перейдите в меню <strong>Apple > Системные настройки</strong>, затем нажмите <strong>Конфиденциальность и безопасность</strong> в боковом меню. (Возможно, потребуется прокрутить вниз.)</li>
+                        <li>Нажмите справа <strong>Запись экрана и системного звука</strong>.</li>
+                        <li>Для приложения <strong>EXAMUS</strong> (или браузера из которого вы проходите тестирование) включите возможность записи. Необходимо разрешить доступ к записи экрана и звука.</li>
+                    </ul>
+                    <p>Чтобы добавить приложение в список, нажмите кнопку «Добавить» (+) под списком, затем перейдите к приложению, которое хотите добавить.</p>
+                    <p><strong>ВНИМАНИЕ!</strong> В некоторых случаях, может помочь удаление приложения EXAMUS из этого списка и добавления заново (необходимо еще раз проверить, что разрешения на запись стоят).</p>
+                    <p>Для того, чтобы более точно узнать где, в вашей версии MacOS, находится управление записью экрана, можно воспользоваться инструкцией на официальном сайте Apple 
+                        (<a href="https://support.apple.com/ru-ru/guide/mac-help/mchlp2591/mac" target="_blank">ссылка на инструкцию</a>).
+                    </p>
+                    <p><strong>Если эти настройки недоступны для изменения, то необходимо отключить защиту.</strong> Нажмите на значок с изображением замка, чтобы разблокировать данный раздел настроек. Потребуется ввести имя и пароль администратора.</p>
+                    <p><strong>Источник:</strong> <a href="https://help.examus.net/article/63203" target="_blank">https://help.examus.net/article/63203</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <div class="footer-section">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo_grad_full.svg" alt="Yandex Cloud Logo" class="footer-logo-img">
+                    <p>Управляйте подписками на новости платформы и анонсы мероприятий в консоли управления в разделе «Настройки»</p>
+                    <a href="https://console.yandex.cloud/settings" target="_blank" class="footer-button">Подписаться на новости</a>
+                </div>
+                <div class="footer-contacts">
+                    <h3>Контакты</h3>
+                    <a href="https://t.me/examusbot" target="_blank" class="contact-link">Телеграм Бот поддержки</a>
+                    <a href="mailto:support@examus.com" class="contact-link">Почта поддержки</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Проект Яндекса &copy; 2024 ООО «Яндекс.Облако»</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to reveal elements on scroll
+        function revealOnScroll() {
+            const sections = document.querySelectorAll('.step-section:not(.no-animation)');
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const sectionHeight = section.offsetHeight;
+                const triggerPoint = window.innerHeight - sectionHeight / 3; // Trigger when 1/3 of the section is in view
+
+                if (sectionTop < triggerPoint) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+
+        // Add event listener for scroll
+        window.addEventListener('scroll', revealOnScroll);
+
+        // Trigger reveal function on load
+        window.addEventListener('load', revealOnScroll);
+
+        // FAQ Section Expand/Collapse Logic
+        document.querySelectorAll('.faq-block').forEach(block => {
+            block.addEventListener('click', function () {
+                this.classList.toggle('active');
+                const content = this.querySelector('.faq-content');
+                
+                if (this.classList.contains('active')) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                } else {
+                    content.style.maxHeight = "0";
+                }
+            });
+        });
+
+        function toggleMenu() {
+            const sideMenu = document.getElementById('sideMenu');
+            const menuButton = document.querySelector('.menu-button');
+            const menuIcon = document.querySelector('.menu-icon');
+            const closeIcon = document.querySelector('.close-icon');
+            
+            // Toggle menu visibility
+            sideMenu.classList.toggle('active');
+            
+            // Toggle button color and icon
+            if (sideMenu.classList.contains('active')) {
+                menuButton.style.backgroundColor = '#0033cc';
+                menuIcon.style.display = 'none';
+                closeIcon.style.display = 'block';
+            } else {
+                menuButton.style.backgroundColor = '#006cff';
+                menuIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
+            }
+        }
+
+        function scrollToSection(event, sectionId) {
+            event.preventDefault();
+            const section = document.getElementById(sectionId);
+            const sideMenu = document.getElementById('sideMenu');
+            
+            // Smooth scroll to the section
+            section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Close menu after scroll
+            sideMenu.classList.remove('active');
+            document.querySelector('.menu-button').style.backgroundColor = '#006cff';
+            document.querySelector('.menu-icon').style.display = 'block';
+            document.querySelector('.close-icon').style.display = 'none';
+        }
+
+    </script>
+</body>
+</html>
+ 
