@@ -302,7 +302,7 @@
         .device-check p {
             margin-top: 20px;
             color: #666;
-            font-size: 14px;
+            font-size: 16px;
         }
 
         .action-button {
@@ -364,13 +364,10 @@
             margin: 0 20px; 
         }
 
-        /* FAQ Section */
+        /* General FAQ Section Styles */
         .faq-section {
-            background-color: #CCDAFF;
             padding: 20px;
             margin: 20px 0;
-            border-radius: 35px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
         .faq-section h2 {
             margin-top: 0;
@@ -379,13 +376,13 @@
         }
 
         .faq-block {
-            background-color: #ffffff;
-            padding: 15px;
-            border-radius: 20px;
+            background-color: #ffffff; 
+            padding: 15px 20px;
+            border-radius: 12px;
             margin-bottom: 10px;
             cursor: pointer;
-            transition: background-color 0.3s, max-height 0.5s ease-in-out;
-            overflow: hidden;
+            transition: background-color 0.3s, border 0.3s;
+            border: 2px solid transparent; 
         }
         .faq-block h3 {
             margin: 0;
@@ -396,6 +393,13 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.5s ease-in-out;
+        }
+        .faq-block:hover {
+            border: 2px solid #006cff; /* Border on hover */
+        }
+
+        .faq-block.active {
+            border: 2px solid #006cff; /* Border when expanded */
         }
         .faq-block.active .faq-content {
             max-height: 300px;
@@ -423,8 +427,8 @@
         }
 
         .footer-logo-img {
-            max-height: 30px;
-            margin-bottom: 10px;
+            max-height: 50px;
+            margin-bottom: 0px;
         }
 
         .footer-logo p {
@@ -842,8 +846,8 @@
             <div class="footer-content">
                 <div class="footer-logo">
                     <img src="logo_grad_full.svg" alt="Yandex Cloud Logo" class="footer-logo-img">
-                    <p>Управляйте подписками на новости платформы и анонсы мероприятий в консоли управления в разделе «Настройки»</p>
-                    <a href="https://console.yandex.cloud/settings" target="_blank" class="footer-button">Подписаться на новости</a>
+                    <!-- <p>Управляйте подписками на новости платформы и анонсы мероприятий в консоли управления в разделе «Настройки»</p>
+                    <a href="https://console.yandex.cloud/settings" target="_blank" class="footer-button">Подписаться на новости</a> -->
                 </div>
                 <div class="footer-contacts">
                     <h3>Контакты</h3>
@@ -883,14 +887,28 @@
             block.addEventListener('click', function () {
                 this.classList.toggle('active');
                 const content = this.querySelector('.faq-content');
-                
+
                 if (this.classList.contains('active')) {
                     content.style.maxHeight = content.scrollHeight + "px";
                 } else {
                     content.style.maxHeight = "0";
                 }
             });
+
+            // Add hover effect logic (CSS already handles hover styles)
+            block.addEventListener('mouseenter', function () {
+                if (!this.classList.contains('active')) {
+                    this.style.borderColor = '#006cff';
+                }
+            });
+
+            block.addEventListener('mouseleave', function () {
+                if (!this.classList.contains('active')) {
+                    this.style.borderColor = 'transparent';
+                }
+            });
         });
+
 
         function toggleMenu() {
             const sideMenu = document.getElementById('sideMenu');
