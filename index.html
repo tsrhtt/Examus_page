@@ -516,6 +516,88 @@
             color: #0033cc;
         }
 
+        .equipment-test-section {
+            margin: 20px 0 40px 0;
+            padding: 0 5px;
+        }
+        .equipment-test-section p { font-size: 18px; line-height: 1.6; }
+
+        .info-block{background:#CCDAFF}
+        .info-block h2{color:#1A2E3B}
+
+        .banner-section{
+            background:linear-gradient(180deg,#4e79eb 0%,#5f95ff 100%);
+            border-radius:35px;
+            padding:40px 20px;
+            text-align:center;
+            margin:40px 0;
+            position:relative;
+
+            overflow:hidden;
+        }
+        .banner-section h2{font-size:24px;font-weight:600;color:#fff;margin-bottom:10px}
+        .banner-section p{font-size:18px;color:#fff;margin:0}
+        .banner-section a{color:#fff;text-decoration:underline}
+
+        .banner-section::before,
+        .banner-section::after{
+            content:"";
+            position:absolute;
+            top:50%;
+            transform:translateY(-50%);
+            width:160px;          
+            height:160px;
+            border:4px solid #fff;
+            border-radius:50%;    
+            pointer-events:none;  
+        }
+
+        
+        .banner-section::before{
+            left:-80px;           
+            border-right:none;    
+        }
+
+        
+        .banner-section::after{
+            right:-80px;          
+            border-left:none;     
+        }
+
+        .step-section img,
+        .instruction-img{
+            display:block;
+            width:100%;          
+            max-width:800px;     
+            height:auto;         
+            margin:20px auto;    
+            border-radius:12px;
+            object-fit:contain;
+        }
+
+        
+        @media (max-width:600px){
+            .step-section img,
+            .instruction-img{
+                max-width:100%;   
+            }
+        }
+
+        .position-examples{
+            display:flex;
+            gap:40px;                 
+            justify-content:center;   
+            margin-top:20px;
+            flex-wrap:wrap;           
+        }
+
+        .position-examples img{
+            max-width:220px;          
+            width:100%;
+            height:auto;
+            border-radius:12px;
+        }
+
     </style>
 </head>
 <body>
@@ -531,42 +613,45 @@
     <!-- Side Menu -->
     <div class="side-menu" id="sideMenu">
         <div class="menu-items">
-            <a href="#step1" class="menu-item" onclick="scrollToSection(event, 'step1')">Скачивание платформы тестирования</a>
-            <a href="#step2" class="menu-item" onclick="scrollToSection(event, 'step2')">Ссылка на тестирование</a>
-            <a href="#step3" class="menu-item" onclick="scrollToSection(event, 'step3')">Запуск системы прокторинга</a>
-            <a href="#step4" class="menu-item" onclick="scrollToSection(event, 'step4')">Сканирование QR-кода</a>
-            <a href="#step5" class="menu-item" onclick="scrollToSection(event, 'step5')">Этапы проверки</a>
-            <a href="#step6" class="menu-item" onclick="scrollToSection(event, 'step6')">Начало тестирования</a>
-            <a href="#faq-section" class="menu-item" onclick="scrollToSection(event, 'faq-section')">Часто задаваемые вопросы</a>
+            <a class="menu-item" href="#step1" onclick="scrollToSection(event,'step1')">Скачать защищённый браузер</a>
+            <a class="menu-item" href="#step2" onclick="scrollToSection(event,'step2')">Проверка устройства</a>
+            <a class="menu-item" href="#step3" onclick="scrollToSection(event,'step3')">Запуск прокторинга</a>
+            <a class="menu-item" href="#step4" onclick="scrollToSection(event,'step4')">Подключение дополнительной камеры</a>
+            <a class="menu-item" href="#step5" onclick="scrollToSection(event,'step5')">Завершение проверки</a>
+            <!-- <a class="menu-item" href="#faq-section" onclick="scrollToSection(event,'faq-section')">FAQ</a> -->
         </div>
     </div>
 
     <div class="container">
         <!-- Hero Section -->
         <div class="hero-section">
-            <h1>Инструкция по подключению к системе прокторинга Examus</h1>
-            <h2>Пройдите все шаги и подготовьтесь к тестированию</h2>
+            <h1>Подключение к системе прокторинга Examus</h1>
+            <h2>Как подготовить компьютер к экзамену</h2>
         </div>
 
         <!-- Rules and Technical Requirements Section -->
         <div class="requirements-section">
             <div class="requirements-text">
                 <h2>Правила и технические требования</h2>
-                <p>Сертификационные экзамены проводятся онлайн в строго контролируемой среде, то есть с прокторингом. Это гарантирует, что экзамен сдан честно. Познакомиться с тем, что такое прокторинг, можно <a href="https://ru.examus.net/blog/chto-takoe-proktoring-kak-rabotaet-sistema-i-gde-ispolzuetsya" target="_blank">в этой статье</a>. Чтобы успешно сдать экзамен, нужно не только сдать тестирование на определённое количество баллов, но и получить оценку “одобрено” от системы прокторинга. Для этого необходимо подключиться к системе прокторинга и не нарушать правила в ходе тестирования.</p>
-                <p>Изучить технические требования к оборудованию можно на этой странице, а правила - на странице экзамена, который вы планируете сдавать.</p>
+                <p>Сертификационные экзамены проводятся онлайн в строго контролируемой среде. Это гарантирует, что экзамен сдан честно. Чтобы получить сертификат, нужно не только набрать определённое количество баллов на экзамене, но и получить оценку «Одобрено» от <a href="https://ru.examus.net/blog/chto-takoe-proktoring-kak-rabotaet-sistema-i-gde-ispolzuetsya" target="_blank">системы прокторинга Examus</a>. Поэтому вам понадобится подключиться к этой системе перед началом экзамена и соблюдать правила в процессе.</p>
+                <p>У каждого экзамена могут быть свои правила. Изучить их можно на странице экзамена на <a href="https://yandex.cloud/ru/certification" target="_blank">сайте программы сертификации</a>, и они всегда имеют приоритет перед общими. С общими правилами, а также с техническими требованиями к оборудованию можно ознакомиться, нажав на кнопки ниже.</p>
                 <div class="requirements-buttons">
-                    <a href="https://yandex.cloud/ru/certification/requirements" target="_blank" class="requirements-button">Engineer Associate</a>
-                    <a href="https://yandex.cloud/ru/certification/security-specialist-requirements" target="_blank" class="requirements-button">Security Specialist</a>
+                    <a href="https://yandex.cloud/ru/certification/requirements" target="_blank" class="requirements-button">Технические требования</a>
+                    <a href="https://yandex.cloud/ru/certification/rules" target="_blank" class="requirements-button">Общие правила</a>
                 </div>
             </div>
             <div class="requirements-image">
                 <img src="certification-block-proctoring.png.webp" alt="Illustration of proctoring setup">
             </div>
         </div>
+        <div class="equipment-test-section">
+            <h2>Тест оборудования и подключения к прокторингу</h2>
+            <p>Проверьте своё оборудование и протестируйте подключение к системе прокторинга за несколько дней до экзамена! Это позволит вам начать экзамен, не столкнувшись с неожиданными техническими проблемами.</p>
+        </div>
 
         <!-- Step 1: Download Section (No Animation) -->
         <div id="step1" class="step-section no-animation">
-            <h2>Шаг 1. Скачать заранее защищенный браузер и пройти предварительную проверку устройства на совместимость</h2>
+            <h2>Шаг 1. Скачать защищённый браузер Examus</h2>
             <div class="download-blocks">
                 <!-- Windows Block -->
                 <div class="download-block">
@@ -584,71 +669,102 @@
             <!-- Admin Rights Information -->
             <div class="admin-rights-block">
                 <h3>Права администратора для компьютера</h3>
+                <p>Для установки защищённого браузера на компьютер потребуются права администратора.</p>
                 <div class="admin-rights-content">
                     <img src="admin_permission.png" alt="Admin Rights Error" style="max-width: 100%; border-radius: 12px;">
-                    <p>Защищённый браузер Examus потребует для установки на компьютер права администратора. 
-                    Подробнее рассказали в статье: <a href="https://help.examus.net/article/72321" target="_blank" class="action-link">https://help.examus.net/article/72321</a></p>
+                    <p>Если возникнет такая ошибка, попробуйте <a href="https://help.examus.net/ru/knowledge_base/art/638/cat/102/zaschischennij-brauzer-eto-prilozenie-zablokirovano-vashim-sistemnim-administratorom" target="_blank" class="action-link">следующие варианты.</a></p>
                 </div>
-            </div>
-            <div class="divider"></div>
-            <div class="device-check">
-                <a href="https://lms.demo.examus.net/web/start/syscheck_sb/" target="_blank">Проверить устройство</a>
-                <p><strong>Обязательно</strong> пройдите проверку оборудования за несколько дней до тестирования. В день тестирования <strong>используйте то же устройство</strong>, на котором была успешно пройдена проверка.</p>
             </div>
         </div>
 
         <!-- Step 2 Section -->
         <div id="step2" class="step-section">
-            <h2>Шаг 2. В день тестирования перейдите в свою почту и откройте полученную от StartExam ссылку. Ссылку открывать нужно в браузере Chrome/Edge/Yandex.</h2>
-            <p>Ниже приведен пример того, как выглядит письмо.</p>
-            <img src="2.png" alt="Example Screenshot">
-            <p>После открытия ссылки нажмите <strong>Начать</strong>.</p>
+            <h2>Шаг 2. Проверка устройства</h2>
+            <p>Перед началом проверки временно отключите программы, которые могут захватывать микрофон или веб-камеру,
+                антивирусы, VPN и программы удалённого доступа.</p>
+            <p>Нажмите кнопку, чтобы проверить своё оборудование и подключение к системе прокторинга.</p>
+            <a class="action-button" href="https://lms.demo.examus.net/web/start/syscheck_sb/" target="_blank">Проверить устройство</a>
+            <p>Вы перейдёте на платформу тестирования <b>StartExam</b>. Откройте тест, нажав на ссылку
+                «Тест для проверки оборудования».</p>
+            <img src="msedge_4WPa3zICgu.png" class="instruction-img" alt="Окно StartExam">
+            <div class="divider"></div>
+            <p>Заполните короткую регистрационную форму и нажмите кнопку <b>Зарегистрироваться</b>.</p>
+            <img src="слайд_5.png" class="instruction-img" alt="Форма регистрации">
+            <div class="divider"></div>
+            <p>Запустите тест, нажав на кнопку <b>Начать</b>.</p>
+            <img src="слайд_6.png" class="instruction-img" alt="Информация о тесте">
         </div>
 
         <!-- Step 3 Section -->
         <div id="step3" class="step-section">
-            <h2>Шаг 3. Откроется Экзамус.</h2>
-            <p>Нажмите <strong>Запустить Систему Прокторинга</strong>.</p>
-            <img src="3.png" alt="Launch Proctoring">
-            <div class="warning-block">
-                <strong>Важно!</strong> Тест будет запущен, если вы установили приложение в пункте 1. Если не установили - нажмите Скачать и установить систему прокторинга.
-            </div>
+            <h2>Шаг 3. Запустите систему прокторинга</h2>
+            <img src="browser_KxlsZXqtOQ.png" class="instruction-img" alt="Кнопка запуска прокторинга">
+            <p>Ознакомьтесь и согласитесь с правилами. Затем автоматически запустится сканирование компьютера. Обычно оно занимает 10-15&nbsp;секунд.</p>
+            <img src="Screenshot 2025-04-28 055641.png" class="instruction-img" alt="Автоматическая проверка">
+            <p>После успешной проверки появится статус <b>«Всё работает и готово к тестированию»</b>.</p>
+            <div class="divider"></div>
+            <p><b>Что делать, если проверка не прошла?</b></p>
+            <p>Обратитесь к <a href="https://help.examus.net/ru/knowledge_base/cat/66/" target="_blank">базе знаний</a> или свяжитесь со Службой заботы Examus:</p>
+            <ul>
+                <li>кнопка чата в защищённом браузере;</li>
+                <li>Telegram-бот: <a href="https://t.me/examusbot" target="_blank">https://t.me/examusbot</a></li>
+                <li>электронная почта: <a href="mailto:support@examus.net">support@examus.net</a></li>
+            </ul>
         </div>
 
         <!-- Step 4 Section -->
         <div id="step4" class="step-section">
-            <h2>Шаг 4. Отсканируйте QR-код со своего смартфона и разрешите доступ к камере на смартфоне.</h2>
-            <div class="instruction-images_4">
-                <img src="QR.png" alt="QR Code Scan" class="instruction-image_4_1">
-                <img src="pngegg.png" alt="Arrow pointing to next step" class="curvy-arrow">
-                <img src="screenshot_camera.png" alt="Camera Permission" class="instruction-image_4_2">
+            <h2>Шаг 4. Подключение дополнительной&nbsp;камеры</h2>
+            <p>На экране компьютера появится QR-код. Отсканируйте его и разрешите доступ к камере смартфона.</p>
+            <img src="Screenshot 2025-04-28 055934.png" class="instruction-img" alt="Сканирование QR-кода">
+            <p>Открывайте ссылку на смартфоне только в Chromium-based браузерах. Firefox и подобные браузеры не поддерживаются.</p>
+            <div class="divider"></div>
+            <p>Расположите смартфон так, чтобы ваши голова и руки, компьютер, стол и пространство над столом были видны в кадре.</p>
+            <div class="position-examples">
+                <img src="fe2530d0685d9fcc98324f41cb58698e65e7976f.png" class="instruction-img" style="max-width:250px" alt="Хорошее положение камеры">
+                <img src="46b7d3daed8ccf084a6849665fc5752c8acbb89c.png"  class="instruction-img" style="max-width:250px" alt="Плохое положение камеры">
             </div>
         </div>
 
         <!-- Step 5 Section -->
         <div id="step5" class="step-section">
-            <h2>Шаг 5. Пройдите этапы проверки: покажите рабочий стол и оборудование, ознакомьтесь с правилами. После этого запустится тестирование.</h2>
-            <img src="4.png" alt="Equipment Check">
+            <h2>Шаг 5. Завершение проверки</h2>
+            <p>Система попросит вас сфотографировать паспорт и показать рабочее место. 
+                Затем она развернёт окно защищённого браузера на весь экран и закроет все ненужные программы. 
+                Подключение к прокторингу завершено, и вы можете переходить к ответам на вопросы теста.</p>
+
+            <!-- Step 6 Section -->
+            <div id="step6" class="step-section info-block">
+                <h2>Подключение к прокторингу на экзамене</h2>
+                <p>Подключение к прокторингу перед экзаменом происходит точно так же, как было описано выше.
+                Ссылка на экзамен будет доступна в вашем личном кабинете на платформе <b>StartExam</b> и придёт
+                вам на электронную почту за день до экзамена.</p>
+            </div>
+        
+            <!-- Step 7 Section -->
+            <div id="step7" class="step-section info-block">
+                <h2>Как получить помощь, если что-то не получается</h2>
+                <p>Если при проверке оборудования или при подключении к экзамену вы столкнулись с техническими
+                проблемами, обратитесь в Службу заботы Examus.</p>
+            </div>
         </div>
 
-        <!-- Step 6 Section -->
-        <div id="step6" class="step-section">
-            <h2>Шаг 6. Начните прохождение тестирования на платформе.</h2>
-            <p>Для завершения тестирования нажмите <strong>Ответить</strong> и <strong>Завершить</strong>.</p>
-            <img src="5.png" alt="Start Testing">
+        <div class="banner-section no-animation">
+            <h2>Остались вопросы или вы обнаружили в гайде неточность?</h2>
+            <p>Напишите нам на <a href="mailto:certification@cloud.yandex.ru">certification@cloud.yandex.ru</a></p>
         </div>
 
         <!-- FAQ Section -->
-        <div id="faq-section" class="faq-section">
+        <!-- <div id="faq-section" class="faq-section">
             <h2>Ответы на часто задаваемые вопросы</h2>
             
-            <!--<div class="faq-block" data-faq="1">
+            <div class="faq-block" data-faq="1">
                 <h3>Как узнать свой результат тестирования?</h3>
                 <div class="faq-content">
                     <p><strong>Результат тестирования будет направлен вам по электронной почте, а также доступен в личном кабинете через 14 дней после экзамена.</strong></p>
                     <p>В зависимости от числа набранных баллов участник получает отметку «сдано» или «не сдано». При получении отметки «сдано» и положительном заключении прокторинга участнику высылается сертификат Yandex Cloud. При получении отметки «не сдано» и положительном заключении прокторинга участник получает информацию о проценте правильных ответов по каждому из доменов. При отрицательном заключении прокторинга участник получает информацию о причинах отклонения результатов.</p>
                 </div>
-            </div>-->
+            </div>
 
             <div class="faq-block" data-faq="2">
                 <h3>Можно ли предварительно проверить своё устройство на соответствие техническим требованиям?</h3>
@@ -697,55 +813,12 @@
                 </div>
             </div>
 
-            <!-- <div class="faq-block" data-faq="6">
+            <div class="faq-block" data-faq="6">
                 <h3>Технические требования для компьютера</h3>
                 <div class="faq-content">
-                    <ul>
-                        <li><strong>Операционная система:</strong>
-                            <ul>
-                                <li>Windows 10 x64 / Windows 11 x64 или более полные издания (Windows 10 S, Windows 8 RT и все 32-разрядные версии - не поддерживаются);</li>
-                                <li>macOS версии 10.12.1 или выше;</li>
-                            </ul>
-                        </li>
-                        <li><strong>Процессор:</strong>
-                            <ul>
-                                <li>Intel Core 2 DUO или AMD Athlon x2, либо более новые модели с поддержкой SSE3, с 2 ядрами и больше, и частотой 1,8 ГГц и выше</li>
-                            </ul>
-                        </li>
-                        <li><strong>Оперативная память:</strong>
-                            <ul>
-                                <li>4 ГБ и больше;</li>
-                            </ul>
-                        </li>
-                        <li><strong>Свободное место на диске:</strong>
-                            <ul>
-                                <li>500 МБ и больше;</li>
-                            </ul>
-                        </li>
-                        <li><strong>Веб-камера:</strong>
-                            <ul>
-                                <li>Фронтальная веб-камера с разрешением 640x480 и выше;</li>
-                            </ul>
-                        </li>
-                        <li><strong>Микрофон:</strong>
-                            <ul>
-                                <li>Наличие исправного и включенного микрофона (включая встроенные в ноутбуки);</li>
-                            </ul>
-                        </li>
-                        <li><strong>Скорость интернет-соединения:</strong>
-                            <ul>
-                                <li>Не ниже 1 Мбит/с;</li>
-                            </ul>
-                        </li>
-                        <li><strong>Передача данных по сетевым портам:</strong>
-                            <ul>
-                                <li>UDP: 3478 (STUN/TURN), 49152 - 65535 (WebRTC media),</li>
-                                <li>TCP: 443 (HTTPS), 3478 (STUN/TURN)</li>
-                            </ul>
-                        </li>
-                    </ul>
+                    ...
                 </div>
-            </div> -->
+            </div> 
 
 
             <div class="faq-block" data-faq="7">
@@ -841,7 +914,7 @@
                     <p><strong>Источник:</strong> <a href="https://help.examus.net/article/63203" target="_blank">https://help.examus.net/article/63203</a></p>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- Footer Section -->
         <div class="footer-section">
@@ -939,7 +1012,7 @@
             const sideMenu = document.getElementById('sideMenu');
             
             // Smooth scroll to the section
-            section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             
             // Close menu after scroll
             sideMenu.classList.remove('active');
